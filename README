@@ -1,1 +1,49 @@
-This file was created by JetBrains PhpStorm 5.0.2 for binding GitHub repository
+Это очень простеньки микрофреймворк:
+
+1) Автоматически роутится если не попадает на одно из исключений описываемое в Index.php
+2) В каждый экшн приходит response и request
+3) Умеет обрабатывать json запросы.
+
+Советую посмотреть 
+controllers/index.php
+
+method_GETvote
+
+Данный экшн сработет при GET запросе на урл /index/vote/{аргумент}
+
+$request->args(0); позволяет получит ьпереданный аргумент
+
+После проверки по белому списку
+
+Выставляем куку
+setcookie('medved',$medved,time()+3600,'/','.winnie-vs-winnie.ru');
+
+Получаем модель данных
+$model = $dao->getModel();
+
+Говорим за которого медведя голосуем
+$model->setVote($medved);
+
+Сохраняем модель данных
+$dao->postModel($model);
+
+
+Таблица в базе данных выглядит следующим образом.
+
+CREATE TABLE `votes` (
+  `id` int(10) unsigned NOT NULL,
+  `left` int(10) unsigned DEFAULT NULL,
+  `right` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1
+
+
+-----------------------------------
+
+
+Внимание Данная голосовалка не рассчитана на высокие нагрузки ( 300 -400 голосов в минуту не больше).
+
+В данном проекте не испольуется кеширование все запросы за данными лезут прямиком в базу.
+
+
+
