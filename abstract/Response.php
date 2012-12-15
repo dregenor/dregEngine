@@ -11,7 +11,6 @@ require_once('abstract/View.php');
 class Response
 {
     private $data = array();
-    private $head = array();
     private $view;
 
     function __construct($template){
@@ -42,7 +41,6 @@ class Response
     }
 
     function returnJSON($status = 200){
-
         $this->setStatus($status);
         echo json_encode($this->data);
     }
@@ -53,7 +51,7 @@ class Response
     }
 
     function redirect($url){
-        header('location:$url');
+        header('location:'.$url);
         die;//на всякий случай
     }
 

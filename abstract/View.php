@@ -24,7 +24,9 @@ class View
 
     function prepare(){
         $this->smarty = new Smarty;
-        $this->smarty->caching = true;
+        $this->smarty->caching = false;
+        //$this->smarty->cache_lifetime = 1; //Кеш рендеренного шаблона живет 1 секунду
+
         $this->smarty->setTemplateDir('templates');
     }
 

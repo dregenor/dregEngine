@@ -11,19 +11,20 @@ class Request
     public  $array_get = array();
     private $array_post = array();
     private $array_args = array();
+    private $_isAjax = false;
 
-    function __construct( $args = array(), $get = array(), $post = array()){
+    function __construct( $args = array(),$method = null){
         if (is_array($args)){
             $this->array_args = $args;
         }
+        $this->array_get = $_GET;
+        $this->array_post = $_POST;
 
-        if (is_array($get)){
-            $this->array_get = $get;
+        if ($method == 'PUT'){
+            parse_str( file_get_contents("php://input"), $this->array_post);
         }
 
-        if (is_array($post)){
-            $this->array_post = $post;
-        }
+        $this->_isAjax  = isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] == 'XMLHttpRequest';
     }
 
     function get($key,$def = null){
@@ -58,5 +59,9 @@ class Request
         } else {
             return $def;
         }
+    }
+
+    function isAjax(){
+        return $this->_isAjax;
     }
 }

@@ -1,4 +1,7 @@
 <?php
+$strt = microtime(true);
+require_once('configs/WinnieConfig.php');
+require_once('lib/ErrorsCollections.php');
 /**
  * Created by JetBrains PhpStorm.
  * User: dregenor
@@ -8,12 +11,18 @@
  */
 require_once('abstract/Router.php');
 
-$router = new Router();
-$uri = str_replace('?'.$_SERVER['QUERY_STRING'],'',$_SERVER['REQUEST_URI']);
-$uri = ltrim($uri,'/');
 
+
+$router = new Router();
+
+//default routes
 $router->addRoute('');
 $router->addRoute('index');
+$router->addRoute('index/rus','index');
+$router->addRoute('index/eng');
+$router->route();
 
-$router->route($uri,$_GET,$_POST);
-header('_debug:'.json_encode($uri));
+$diff = microtime(true) - $strt;
+if ($diff > 1){
+    error_log($diff);
+}

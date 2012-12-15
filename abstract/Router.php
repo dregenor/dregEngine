@@ -15,6 +15,41 @@
 class Router
 {
     private $routes = array();
+    private $url;
+    private $_isAjax;
+    private $_method;
+    private $_mpref = 'method_';
+
+    function __construct()
+    {
+        if ( in_array( $_SERVER['REQUEST_METHOD'], array( 'GET', 'PUT', 'POST', 'DELETE' ) ) ){
+            $this->_method = $_SERVER['REQUEST_METHOD'];
+        }
+
+        $this->_isAjax  = isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] == 'XMLHttpRequest';
+
+        $this->url = $this->getUrl();
+    }
+
+    private function sanitizationUrl( $url ){
+        $patterns = array(
+            '../../', 'drop', '/passwd', 'select', 'update', 'show', 'flush',
+        );
+
+        $url = str_ireplace($patterns, '', $url);
+        return $url;
+    }
+
+    public function getUrl(){
+        $urlPath = parse_url(
+            substr( self::sanitizationUrl( $_SERVER['REQUEST_URI'] ), 1 ),
+            PHP_URL_PATH
+        );
+
+        $urlPath = trim( $urlPath, '/' );
+
+        return $urlPath;
+    }
 
     function addRoute($route='/',$controller='index',$action='index'){
         $this->routes[$route]['controller']=$controller;
@@ -22,25 +57,32 @@ class Router
     }
 
 
-    function route($uri,$get,$post){
+    function route(){
         $args = array();
-        if (array_key_exists($uri,$this->routes))
-        {
-            $controller = $this->routes[$uri]['controller'];
-            $action = $this->routes[$uri]['action'];
+
+        if (array_key_exists($this->url,$this->routes)) {
+            $controller = $this->routes[$this->url]['controller'];
+            $action = $this->routes[$this->url]['action'];
         } else {
-            $args = explode('/',$uri);
+            $args = explode('/',$this->url);
             list($controller,$action) = array_splice($args,0,2);
         }
 
         $classfile = $_SERVER['DOCUMENT_ROOT'].'/controllers/'.$controller.'.php';
         if (file_exists($classfile)){
-            require_once($_SERVER['DOCUMENT_ROOT'].'/controllers/'.$controller.'.php');
+            require_once($classfile);
             if (class_exists($controller)){
                 $exemplar = new $controller;
-                $method= 'method_'.$action;
+
+                $method= $this->_mpref.$this->_method.$action;
+
+                //гавенный кусок надо поправить логику
+
+                if ( ! method_exists($exemplar,$method)){
+                    $method= $this->_mpref.$action;
+                }
                 if (method_exists($exemplar,$method)){
-                    $request = new Request($args,$get,$post);
+                    $request = new Request($args,$this->_method);
                     $response = new Response(''.$controller.'/'.$action.'.tpl');
 
                     $exemplar->$method($request,$response);
@@ -52,6 +94,9 @@ class Router
             }
         } else {
             Response::return404();
+        }
+        if (isset($_GET['_debug'])){
+            header('_debug',ErrorsCollections::out());
         }
     }
 

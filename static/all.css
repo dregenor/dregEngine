@@ -1,0 +1,470 @@
+* {
+margin: 0;
+padding: 0
+}
+
+img {
+    border: none;
+}
+
+@font-face {
+    font-family: 'PFReminderPro';
+    src: url('fonts/PFReminderPro-Bold.ttf');
+}
+
+a {
+    text-decoration: none;
+    font-family: Tahoma, arial;
+    color: #777;
+}
+
+.content {
+    display: block;
+    margin: auto ;
+    width: 1024px;
+    text-align: center;
+}
+
+.heart {
+    position: absolute;
+    background: url("/static/images/heart.png") no-repeat;
+    display: block;
+    width: 92px;
+    height: 52px;
+    text-align: center;
+    font-family: 'PFReminderPro';
+    color: white;
+    padding-top: 25px;
+    font-size: 1em;
+    top:270px;
+    cursor: pointer;
+    background-position-y: 0px ;
+}
+
+.heart:hover {
+    padding-top: 35px;
+    top:250px;
+    width: 116px;
+    height: 80px;
+    background-position: 0px -75px ;
+    cursor: pointer;
+}
+
+.left {
+    left: 50px;
+}
+
+
+.left:hover {
+    left: 38px;
+}
+
+.right {
+    right: 50px;
+}
+
+.right:hover {
+    right: 38px;
+}
+
+.overBox {
+    overflow: hidden;
+    margin-right: 5px;
+}
+
+.vote {
+    margin: auto;
+}
+
+.tree {
+    background: url("/static/images/tree.jpg") no-repeat ;
+    background-position: center top;
+    width: 100%;
+    height: 795px;
+}
+
+body {
+    background: url("/static/images/main-back.jpg") repeat;
+    margin: 0px;
+}
+
+.selected {
+    color: #666;
+}
+
+.select-this {
+    font-weight: bold;
+}
+
+.magneto{
+    z-index: 3;
+    overflow: visible;
+    display: none;
+}
+
+.bees{
+    position: absolute;
+    top: 150px;
+    left: 300px;
+    width: 260px;
+    height: 158px;
+
+
+}
+
+.medvedRus{
+    position: absolute;
+    right: 0px;
+    top:33px;
+    width: 208px;
+    height: 230px;
+    cursor: pointer;
+}
+
+.medvedEng{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 198px;
+    height: 251px;
+    cursor: pointer;
+}
+
+div.countdown-counter{
+    background: url("/static/images/countdown-counter.png") no-repeat;
+    display: block;
+    width: 274px;
+    height: 105px;
+    position: absolute;
+    top:75px;
+    left: 50%;
+    margin-left: -137px;
+    z-index: 30;
+    font-family: PFReminderPro;
+    padding: 10px 0;
+    text-align: center;
+    line-height: 1.5em;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #777;
+}
+
+span.countdown-counter{
+    font-size: 1.7em;
+    display: block;
+    text-align: center;
+    color: #000000;
+}
+
+.counter-description{
+    display: block;
+    font-size: 0.7em;
+}
+
+
+.front-content{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.fixed-digit{
+    display: inline-block;
+    width:40px;
+}
+
+.popup {
+    padding: 74px 87px;
+    width: 406px;
+    height: 390px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -289px;
+    background: url('/static/images/popup-back.png') no-repeat;
+    z-index: 1000;
+}
+
+.text {
+    font-family: PFReminderPro;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1em;
+}
+
+.honey {
+    margin: auto ;
+    width: 250px;
+    height: 232px;
+}
+
+.honey.medvedEng {
+    position: initial;
+}
+
+.honey.medvedRus {
+    position: initial;
+}
+
+div.soc_vote_medvedRus, div.soc_vote_medvedEng {
+    margin-top: 25px;
+    text-align: center;
+    font-family: PFReminderPro;
+    font-size: 1.5em;
+    line-height: 20px;
+}
+
+div.logo {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    width: 644px;
+    height: 141px;
+    background: url("/static/images/logo.png");
+    margin-left: -322px;
+}
+
+.like-buttn {
+    float: left;
+    margin: 5px;
+}
+
+div.likes{
+    position: absolute;
+    width: 340px;
+    overflow: hidden;
+    left: 60px;
+    bottom: 0px;
+}
+
+.activity-container {
+    position: absolute;
+    width: 940px;
+    height: 350px;
+    display: block;
+    top:400px;
+    left: 50%;
+    margin-left: -450px;
+}
+
+.exit {
+    position: absolute;
+    top: 90px;
+    right: 105px;
+    cursor: pointer;
+}
+
+.logos {
+    position: absolute;
+    right: 60px;
+    bottom: 0px;
+    display: block;
+    width: 148px;
+    height: 41px;
+    background: url("/static/images/logos.png") no-repeat;
+}
+
+.disney-winnie-back {
+    background: url("/static/images/disney-winnie-back.jpg") no-repeat ;
+    background-position: center top;
+    width: 100%;
+    height: 795px;
+}
+
+.disney-winnie-content {
+    position: relative;
+    margin: 0 auto;
+    width: 900px;
+    padding-top: 100px;
+    font-family: 'PFReminderPro';
+}
+
+.russia-winnie-back {
+    background: url("/static/images/russia-winnie-back.jpg") no-repeat ;
+    background-position: center top;
+    width: 100%;
+    height: 795px;
+}
+
+.russia-width {
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+    height: 795px;
+    font-family: 'PFReminderPro';
+}
+
+.russia-winnie-content {
+    position: relative;
+    padding-top: 100px;
+    font-family: 'PFReminderPro';
+    float: right;
+}
+
+.right-arrow {
+    position: absolute;
+    right: 50px;
+    background: url("/static/images/right.png") no-repeat;
+    width: 62px;
+    height: 94px;
+    top: 30%;
+}
+
+.left-arrow {
+    position: absolute;
+    left: 50px;
+    background: url("/static/images/arrow-left.png") no-repeat;
+    width: 63px;
+    height: 94px;
+    top: 30%;
+}
+
+.text-back {
+    position: relative;
+    background: url("/static/images/about_winnie.png") no-repeat;
+    width: 472px;
+    height: 136px;
+}
+
+.text-back p {
+    padding-left: 30px;
+    padding-top: 22px;
+    padding-right: 30px;
+    font-size: 14px;
+}
+
+.video {
+    position: relative;
+    margin-top: -24px;
+}
+
+.name-video-back {
+    position: relative;
+    background: url("/static/images/name_video_back.png") no-repeat;
+    width: 329px;
+    height: 49px;
+    margin-left: 110px;
+    z-index: 40;
+} 
+
+.name-video-back h2 {
+    font-size: 22px;
+    padding-top: 7px;
+    text-align: center;
+}
+
+.video-back {
+    background: url("/static/images/video_back.png") no-repeat;
+    height: 403px;
+    width: 488px;
+    margin-top: -40px;
+    margin-left: -10px;
+    position: relative;
+}
+
+.youtube {
+    position: absolute;
+    background: #eee;
+    width: 420px;
+    height: 315px;
+    left: 50%;
+    margin-left: -210px;
+    margin-top: 50px;
+}
+
+.disney-bees {
+    position: absolute;
+    right: 20px;
+    top: 510px;
+    z-index: 20;
+}
+
+.russia-bees {
+    position: absolute;
+    left: 20px;
+    top: 510px;
+    z-index: 20;
+}
+
+.download-content {
+    position: absolute;
+    right: 140px;
+    top: 570px;
+    z-index: 80;
+}
+
+.download-content-russia {
+    position: absolute;
+    left: 110px;
+    top: 570px;
+    z-index: 80;
+}
+
+.download-content h2 {
+    line-height: 48px;
+}
+
+.disney-logo {
+    margin-left: 20px;
+}
+
+.russia-logo {
+    margin-left: 20px;
+}
+
+.torrent {
+    margin-left: 20px;
+}
+
+.float {
+    position: relative;
+    float: left;
+}
+
+.footer {
+    position: absolute;
+    width: 640px;
+    height: 50px;
+    display: block;
+    top:700px;
+    left: 50%;
+    margin-left: -300px;
+}
+
+span.smultfilm {
+    background:url("/static/images/button_s.png");
+    width:48px;
+    height:48px;
+    display: inline-block;
+}
+
+span.smultfilm:hover {
+    background:url("/static/images/button_s_color.png");
+    cursor:pointer;
+}
+
+span.torrent {
+    background:url("/static/images/button_u.png");
+    width:48px;
+    height:48px;
+    display: inline-block;
+}
+
+span.torrent:hover {
+    background:url("/static/images/button_u_color.png");
+    cursor:pointer;
+}
+
+span.disney {
+    background:url("/static/images/button_d.png");
+    width:48px;
+    height:48px;
+    display: inline-block;
+}
+
+span.disney:hover {
+    background:url("/static/images/button_d_color.png");
+    cursor:pointer;
+}
